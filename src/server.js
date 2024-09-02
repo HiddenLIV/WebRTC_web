@@ -18,10 +18,16 @@ wsServer.on("connection", (socket)=>{
     // console.log(socket);
     // socket.on("enter_room", (roomName)=>{console.log(roomName)})
     socket.on("enter_room", (roomName, done)=>{
-        console.log(roomName)
-        setTimeout(()=>{
-            done()
-        }, 5000);
+        done();
+        // console.log(roomName)
+        // console.log(socket.id)
+        // console.log(socket.rooms)
+        socket.join(roomName)
+        console.log(socket.rooms)
+        socket.to(roomName).emit("welcome");
+        // setTimeout(()=>{
+        //     done()
+        // }, 5000);
     })
 })
 
